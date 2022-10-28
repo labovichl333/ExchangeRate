@@ -1,0 +1,12 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.input-item {
+    display: grid;
+    grid-template-columns: 60px 270px;
+}

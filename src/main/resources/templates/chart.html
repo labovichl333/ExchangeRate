@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>График</title>
+</head>
+<body>
+<canvas id="myChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    let values = /*[[${data.values}]]*/ 'default';
+    let dates = /*[[${data.dates}]]*/ 'default';
+
+    /*]]>*/
+</script>
+
+<script>
+    if(dates && values){
+        configChart(dates,values)
+
+    }
+
+    function configChart(labels,data){
+        const settings = {
+            labels: labels,
+            datasets: [{
+                label: 'Курс белорусского рубля к выбранной валюте',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: data,
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: settings,
+            options: {}
+        };
+
+        new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    }
+
+
+</script>
+
+</body>
+</html>

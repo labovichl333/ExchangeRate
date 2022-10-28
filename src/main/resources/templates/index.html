@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <title>Курсы валют</title>
+</head>
+<body>
+<main class="wrapper">
+    <section class="inputData">
+        <form class="search" th:action="@{/currencies/}">
+            <div class="input-item">
+                <label for="currency">Валюта</label>
+                <select id="currency">
+
+                    <option th:each="currensy : ${currencies}"
+                            th:value="${currensy.id}"
+                            th:text="${currensy.name}"
+                    >
+                    </option>
+                </select>
+            </div>
+            <div class="input-item">
+                <label for="startDate">Дата от</label>
+                <input type="date" id="startDate" name="startDate" value="" required
+                       th:max="${#temporals.format(currentDate, 'yyyy-MM-dd')}">
+            </div>
+            <div class="input-item">
+                <label for="endDate">Дата до</label>
+                <input type="date" id="endDate" name="endDate" required
+                       th:max="${#temporals.format(currentDate, 'yyyy-MM-dd')}">
+            </div>
+
+            <input type="submit" value="Выполнить"/>
+
+        </form>
+
+    </section>
+
+
+</main>
+
+<script th:src="@{js/main.js}"></script>
+
+</body>
+</html>
